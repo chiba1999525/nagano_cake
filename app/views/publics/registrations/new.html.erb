@@ -1,0 +1,92 @@
+<h2>新規会員登録</h2>
+
+<%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+  <%= render "publics/shared/error_messages", resource: resource %>
+
+
+  <p>名前：
+     （性）
+    <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.name_field :first_name, autocomplete: "current-first_name" %>
+    </div>
+    （名）
+    <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.name_field :last_name, autocomplete: "current-last_name" %>
+    </div>
+  </p>
+  
+  <p>フリガナ：
+     (セイ)
+    <div class="field">
+    <%= f.label :first_name_kana %><br />
+    <%= f.name_field :first_name_kana, autocomplete: "current-first_name_kana" %>
+    </div>
+    （メイ)
+    <div class="field">
+    <%= f.label :last_name_kana %><br />
+    <%= f.name_field :last_name_kana, autocomplete: "current-last_name_kana" %>
+    </div>
+  </p>
+  
+  <p>メールアドレス：
+    <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "current-email" %>
+    </div>
+  </p>
+  
+  <p>郵便番号（ハイフンなし）：
+    <div class="field">
+    <%= f.label :post_cade %><br />
+    <%= f.post_cade_field :post_cade, autocomplete: "current-post_cade" %>
+    </div>
+  </p>
+  
+  <p>住所：
+    <div class="field">
+    <%= f.label :address %><br />
+    <%= f.address_field :address, autocomplete: "current-address" %>
+    </div>
+  </p>
+  
+  <p>電話番号（ハイフンなし）：
+    <div class="field">
+    <%= f.label :last_telphone_number %><br />
+    <%= f.telphone_number_field :telphone_number, autocomplete: "current-telphone_number" %>
+    </div>
+  </p>
+  
+  <p>パスワード（6文字以上）：
+    <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  　</div>
+  </p>
+  
+  <p>パスワード（再確認）
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+  </p>
+  
+  <p>
+    <div class="actions">
+    <%= f.submit "新規登録" %>
+    </div>
+  </p>
+<% end %>
+
+<h1>既に登録済みの方</h1>
+
+<p>
+  <%= link_to "こちら", customers_sign_in_path %>
+  からログインしてください
+</p>
+
+<%= render "publics/shared/links" %>

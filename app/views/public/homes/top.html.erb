@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+
+    <table>
+       <th>ジャンル検索</th>
+      <% @genres.each do |genre| %>
+      <td><%= genre.name %></td>
+      <% end %>
+    </table>
+
+    </div>
+
+    <div class="col-lg-8">
+      <table class="table table-striped">
+        <p>ようこそ、ながのCAKEへ！<br />
+        このサイトでは、cake販売のECサイトになります。<br />
+        会員でない方も閲覧はできますが、<br />
+        購入には、会員登録が必要になります。
+        　　</p>
+
+        　　<h1>新着商品</h1>
+
+        　　<% @items.each do |item| %>
+        　　<div class="item">
+              <%= attachment_image_tag item, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+
+              <%= link_to public_item_path(item.id) do %>
+              <%= item.name %>
+              <% end %>
+
+              <%= item.price %>
+        　　</div>
+        　　<% end %>
+
+
+      </table>
+    </div>
+  </div>
+</div>

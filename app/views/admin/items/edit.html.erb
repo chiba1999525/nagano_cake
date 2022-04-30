@@ -1,0 +1,40 @@
+<h1>商品詳細</h1>
+
+
+<%= form_with model: @item, url:admin_item_path(@item.id), local:true do |f| %>
+<p>商品画像：
+<%= attachment_image_tag @item, :image, :fil, 40, 50 %>
+<labe for="inputImage">ファイルを選択</labe>
+<%= f.attachment_field :image, placeholder: "選択されていません" %>
+</p>
+
+<p>
+商品名：
+<%= f.text_field :name %>
+</p>
+
+<p>
+商品説明：
+<%= f.text_area :introduction %>
+</p>
+
+<p>
+ジャンル：
+<%= f.collection_select(:genre_id, Genre.all, :id, :name) %>
+</p>
+
+<p>
+税込み価格：
+<%= f.number_field :price %>円
+</p>
+
+<p>
+販売ステータス：
+<%= f.radio_button :is_active, "販売中" %>販売中
+<%= f.radio_button :is_active, "販売停止中" %>販売停止中
+</p>
+
+<p>
+<%= f.submit "変更を保存" %>
+</p>
+<% end %>

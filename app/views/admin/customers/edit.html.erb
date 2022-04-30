@@ -1,0 +1,62 @@
+<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h2>
+
+<%= form_with model: @customer, url: admin_customer_path, local: true do |f| %>
+
+　  <p>名前：
+    <div class="field">
+    <%= f.label :（性） %>
+    <%= f.text_field :first_name, autocomplete: "current-first_name" %>
+    </div>
+
+    <div class="field">
+    <%= f.label :（名） %>
+    <%= f.text_field :last_name, autocomplete: "current-last_name" %>
+    </div>
+  </p>
+
+  <p>フリガナ：
+    <div class="field">
+    <%= f.label :（セイ） %>
+    <%= f.text_field :first_name_kana, autocomplete: "current-first_name_kana" %>
+    </div>
+    <div class="field">
+    <%= f.label :（メイ） %>
+    <%= f.text_field :last_name_kana, autocomplete: "current-last_name_kana" %>
+    </div>
+  </p>
+
+  <p>
+    <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autocomplete: "current-email" %>
+    </div>
+  </p>
+
+  <p>
+    <div class="field">
+    <%= f.label :郵便番号（ハイフンなし） %><br />
+    <%= f.number_field :postal_code, autocomplete: "current-post_cade" %>
+    </div>
+  </p>
+
+  <p>
+    <div class="field">
+    <%= f.label :住所 %><br />
+    <%= f.text_field :address, autocomplete: "current-address" %>
+    </div>
+  </p>
+
+  <p>
+    <div class="field">
+    <%= f.label :電話番号（ハイフンなし） %><br />
+    <%= f.number_field :telephone_number, autocomplete: "current-telphone_number" %>
+    </div>
+  </p>
+
+  <p>
+    <div class="actions">
+    <%= f.submit "変更を保存" %>
+    </div>
+  </p>
+
+<% end %>
