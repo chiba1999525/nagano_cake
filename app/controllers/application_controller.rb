@@ -2,30 +2,30 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def admin_sign_in_path_for(resource)
-   admin_items_path
+  def after_admin_sign_in_path_for(resource)
+   admin_root_path
   end
 
-  def admin_sign_up_path_for(resource)
-   admin__path
+  def aftadmin_sign_up_path_for(resource)
+   admin_root_path
   end
 
   def admin_sign_out_path_for(resource)
-   admin_root_path
+    root_path
   end
 
 
 
   def customer_sign_in_path_for(resource)
-   public_items_path
+   public_root_path
   end
 
   def customer_sign_up_path_for(resource)
-   public_path
+   public_root_path
   end
 
   def customer_sign_out_path_for(resource)
-   public_root_path
+    root_path
   end
 
   protected

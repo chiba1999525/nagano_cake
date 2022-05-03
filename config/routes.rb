@@ -16,17 +16,22 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :items, only:[:index, :show]
     resources :customers, only:[:show, :edit, :update] do
-        get '/customers/confirm' =>  'public/customers#cunfirm'
-        get '/customers/withdraw_processing' =>  'public/customers#withdraw_processing'
+       collection do
+          get '/mypage' => 'customers#show'
+          get '/confirm' =>  'customers#confirm'
+          patch '/withdraw_processing' =>  'customers#withdraw_processing'
+        end
     end
     resources :cart_items, only:[:index, :create, :update, :destroy] do
       collection do
         delete 'destroy_all'
       end
     end
-    resources :orders, only:[:index, :show, :new, :create, :confirm, :thank_you] do
-       get 'customers/cofirm' =>  'public/orders#confirm'
-       get 'customers/thank_you' =>  'public/orders#thank_you'
+    resources :orders, only:[:index, :show, :new, :create ] do
+      collection do
+         post '/confirm' =>  'orders#confirm'
+         get '/thank_you' =>  'orders#thank_you'
+      end
     end
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
   end

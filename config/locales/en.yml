@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  
+  cart_item:
+    item_id: "29"
+    amount: "5"
+
+

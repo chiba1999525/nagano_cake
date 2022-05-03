@@ -7,10 +7,19 @@
     <th>注文個数</th>
     <th>注文ステータス</th>
   </thead>
+  <% @orders.each do |order| %>
   <tbody>
-    <td></td>
-    <td></td>
-    <td></td>
+    <% order.order_details.all.each do  |order_detail| %>
+   <% @amount = @amount + order_detail.amount %>
+   <% end %>
+   <td>
+    <%= link_to admin_order_path(order.id) do  %>
+    <%= order.created_at %>
+    <% end %>
+    </td>
+    <td><%= order.name %></td>
+    <td><%= @amount %></td>
     <td></td>
   </tbody>
+  <% end %>
 </table>

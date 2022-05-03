@@ -3,10 +3,14 @@
     <div class="col-lg-4">
 
     <table>
-       <th>ジャンル検索</th>
-      <% @genres.each do |genre| %>
-      <td><%= genre.name %></td>
-      <% end %>
+       <thead>
+         <th>ジャンル検索</th>
+       </thead>
+        <% @genres.each do |genre| %>
+        <tbody>
+          <td><%= genre.name %></td>
+        </tbody>
+        <% end %>
     </table>
 
     </div>
@@ -29,7 +33,7 @@
               <%= item.name %>
               <% end %>
 
-              <%= item.price %>
+              ¥<%= item.price %>
         　　</div>
         　　<% end %>
 
