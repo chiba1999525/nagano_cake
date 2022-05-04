@@ -10,7 +10,7 @@
   <% @orders.each do |order| %>
   <tbody>
     <% order.order_details.all.each do  |order_detail| %>
-   <% @amount = @amount + order_detail.amount %>
+   <% @amounts = @amount + order_detail.amount %>
    <% end %>
    <td>
     <%= link_to admin_order_path(order.id) do  %>
@@ -18,7 +18,7 @@
     <% end %>
     </td>
     <td><%= order.name %></td>
-    <td><%= @amount %></td>
+    <td><%= @amounts %></td>
     <td></td>
   </tbody>
   <% end %>

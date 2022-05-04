@@ -21,7 +21,7 @@
    <%= current_customer.address %>
 
 <p><h6><%= f.radio_button :select_address, 1 %>登録済みの住所から選択</h6></p>
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
+<%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :full_address) %>
 
 <p><h6><%= f.radio_button :select_address, 2 %>新しいお届け先</h6></p>
    <p>郵便番号:（ハイフンなし）<%= f.text_field :postal_code%></p>

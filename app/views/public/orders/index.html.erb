@@ -19,7 +19,8 @@
       <td><% order.order_details.each do |order_detail| %>
           <%= order_detail.item.name %>
           <% end %></td>
-      <td><%= order.total_payment %></td>
+          <% @order  = order.total_payment %>
+      <td><%= @order + order.shipping_cost %></td>
       <td><%#= order. %></td>
       <td><%= link_to "表示する", public_order_path(order.id) %></td>
     </tr>

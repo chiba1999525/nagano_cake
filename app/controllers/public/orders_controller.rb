@@ -19,7 +19,7 @@ class Public::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @order.shipping_cost = 800
     @order.payment_method = params[:order][:payment_method]
     @order.total_payment = @cart_items.sum(&:subtotal)

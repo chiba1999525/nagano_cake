@@ -34,7 +34,7 @@
   </tr>
   <tr>
     <th>ご請求額</th>
-    <td><%= @order.total_payment %></td>
+    <td><%= @order.shipping_cost + @order.order_details.sum(&:subtotal) %></td>
   </tr>
 </table>
 
