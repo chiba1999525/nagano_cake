@@ -37,10 +37,11 @@
  </p>
 
  <h5>支払方法</h5>
- <%= @order.payment_method %>
+ <%= @order.payment_method_i18n %>
 
  <h5>お届け先</h5>
- <%= @order.address %>
+ <p><%= @order.postal_code %><%= @order.address %></p>
+ <p><%= @order.name %></p>
 
 <%= form_with model: @order , url: public_orders_path, local:true do |f|  %>
     <%= f.hidden_field :address, value: @order.address  %>

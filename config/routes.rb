@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root to: 'homes#top'
-
   namespace :admin do
     root 'homes#top'
     resources :items, only:[:index, :new, :create, :show, :edit, :update]

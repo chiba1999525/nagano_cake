@@ -25,8 +25,31 @@
 
 
 
-      (Admin)
-     <% if admin_signed_in? %>
+
+
+
+
+
+
+
+    <% if customer_signed_in? %>
+      <li class="nav-item">
+        <%= link_to "マイページ", mypage_public_customers_path %>
+      </li>
+
+       <li class="nav-item">
+        <%= link_to "商品", public_items_path %>
+      </li>
+
+       <li class="nav-item">
+        <%= link_to "カート", public_cart_items_path %>
+      </li>
+
+       <li class="nav-item">
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete  %>
+      </li>
+
+　　 <% elsif admin_signed_in? %>
       <p>
       <li class="nav-item">
         <%= link_to "商品一覧", admin_items_path %>
@@ -50,45 +73,6 @@
        <li class="nav-item">
         <%= link_to "ログアウト",  destroy_admin_session_path, method: :delete %>
       </li>
-
-      <% else %>
-
-      <li class="nav-item">
-        <%= link_to "About"  %>
-      </li>
-
-      <li class="nav-item">
-        <%= link_to "商品一覧", admin_items_path  %>
-      </li>
-
-      <li class="nav-item">
-        <%= link_to "新規登録", new_admin_registration_path %>
-      </li>
-
-      <li class="nav-item">
-        <%= link_to "ログイン", new_admin_session_path %>
-      </li>
-    <% end %>
-
-
-    (Customer)
-    <% if customer_signed_in? %>
-      <li class="nav-item">
-        <%= link_to "マイページ", mypage_public_customers_path %>
-      </li>
-
-       <li class="nav-item">
-        <%= link_to "商品", public_items_path %>
-      </li>
-
-       <li class="nav-item">
-        <%= link_to "カート", public_cart_items_path %>
-      </li>
-
-       <li class="nav-item">
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete  %>
-      </li>
-
       <% else %>
 
        <li class="nav-item">
@@ -116,6 +100,7 @@
       </nav>
     </header>
     <main class="mb-auto">
+
     <%= yield %>
     </main>
 
