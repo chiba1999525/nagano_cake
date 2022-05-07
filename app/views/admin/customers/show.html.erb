@@ -8,9 +8,9 @@
 <p>電話番号:<%= @customer.telephone_number %></p>
 <p>メールアドレス:<%= @customer.email %></p>
 <p>会員ステータス: <td><% if @customer.is_active == true %>
-                             "有効"
+                             有効
                         <% elsif @customer.is_active == false %>
-                             "退会"
+                             退会
                         <% end %></td>
 
 
