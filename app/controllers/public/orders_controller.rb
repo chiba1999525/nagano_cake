@@ -12,10 +12,13 @@ class Public::OrdersController < ApplicationController
      @cart_items = current_customer.cart_items
      @cart_items.each do |cart_item|
      @order_detail = OrderDetail.new(price:cart_item.item.with_tax_price, amount:cart_item.amount, item_id:cart_item.item_id, order_id: @order.id)
-     @order_detail.save
+      if @order_detail.save
+        cart_item.destroy
+      end
      end
      redirect_to  thank_you_public_orders_path
-  end
+   end
+
 
   def confirm
     @order = Order.new(order_params)
